@@ -16,18 +16,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => WelcomeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          // lazy: false,
+          create: (context) => WelcomeBloc(),
+        ),
+        BlocProvider(
+          // lazy: false,
+          create: (context) => AppBlocs(),
+        )
+      ],
       child: ScreenUtilInit(
         builder: (context, child) {
           return MaterialApp(
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-              ),
-              home: const Welcome()
-              // MyHomePage(),
-              );
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: const Welcome(),
+            routes: {
+              "myHomePage": (context) => const MyHomePage(),
+            },
+          );
         },
       ),
     );
@@ -64,6 +75,7 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
+            heroTag: "heroTag1",
             onPressed: () => BlocProvider.of<AppBlocs>(context).add(
               Increment(),
             ),
@@ -71,6 +83,7 @@ class MyHomePage extends StatelessWidget {
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
+            heroTag: "heroTag2",
             onPressed: () => BlocProvider.of<AppBlocs>(context).add(
               Decrement(),
             ),

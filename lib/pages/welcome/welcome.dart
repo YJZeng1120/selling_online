@@ -135,13 +135,12 @@ Widget _page(
           if (index < 3) {
             pageController.animateToPage(
               index,
-              duration: Duration(milliseconds: 500),
-              curve: Curves.easeIn,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.decelerate,
             );
           } else {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return MyHomePage();
-            }));
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil("myHomePage", (route) => false);
           }
         },
         child: Container(
