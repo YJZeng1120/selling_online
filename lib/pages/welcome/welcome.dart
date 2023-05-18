@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:selling_online/main.dart';
 import '/pages/welcome/bloc/welcome_blocs.dart';
 import '/pages/welcome/bloc/welcome_events.dart';
 import '/pages/welcome/bloc/welcome_states.dart';
@@ -14,6 +15,8 @@ class Welcome extends StatefulWidget {
     return _WelcomeState();
   }
 }
+
+PageController pageController = PageController(initialPage: 0);
 
 class _WelcomeState extends State<Welcome> {
   @override
@@ -30,6 +33,7 @@ class _WelcomeState extends State<Welcome> {
                 alignment: Alignment.center,
                 children: [
                   PageView(
+                    controller: pageController,
                     onPageChanged: (index) {
                       BlocProvider.of<WelcomeBloc>(context).add(
                         WelcomeEvents(),
@@ -126,35 +130,50 @@ Widget _page(
           ),
         ),
       ),
-      Container(
-        width: 345.w,
-        height: 50.h,
-        margin: EdgeInsets.only(
-          top: 100.h,
-          left: 25.w,
-          right: 25.w,
-        ),
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(
-            15.w,
+      GestureDetector(
+        onTap: () {
+          if (index < 3) {
+            pageController.animateToPage(
+              index,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeIn,
+            );
+          } else {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return MyHomePage();
+            }));
+          }
+        },
+        child: Container(
+          width: 345.w,
+          height: 50.h,
+          margin: EdgeInsets.only(
+            top: 100.h,
+            left: 25.w,
+            right: 25.w,
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 1,
-              blurRadius: 2,
-              offset: Offset(0, 2),
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(
+              15.w,
             ),
-          ],
-        ),
-        child: Center(
-          child: Text(
-            buttonName,
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.normal,
-              color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              buttonName,
+              style: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.normal,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
