@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:selling_online/main.dart';
+
 import '/pages/welcome/bloc/welcome_blocs.dart';
 import '/pages/welcome/bloc/welcome_events.dart';
 import '/pages/welcome/bloc/welcome_states.dart';
@@ -105,14 +105,12 @@ Widget _page(
             imagePath,
             fit: BoxFit.fill,
           )),
-      Container(
-        child: Text(
-          title,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 24.sp,
-            fontWeight: FontWeight.normal,
-          ),
+      Text(
+        title,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 24.sp,
+          fontWeight: FontWeight.normal,
         ),
       ),
       Container(
@@ -140,7 +138,7 @@ Widget _page(
             );
           } else {
             Navigator.of(context)
-                .pushNamedAndRemoveUntil("myHomePage", (route) => false);
+                .pushNamedAndRemoveUntil("signIn", (route) => false);
           }
         },
         child: Container(

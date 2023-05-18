@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:selling_online/pages/sign_in/sign_in.dart';
 import '/app_blocs.dart';
 import '/app_events.dart';
 import '/app_states.dart';
@@ -33,10 +34,13 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: ThemeData(
               primarySwatch: Colors.blue,
+              appBarTheme: const AppBarTheme(
+                  backgroundColor: Colors.white, elevation: 0),
             ),
             home: const Welcome(),
             routes: {
               "myHomePage": (context) => const MyHomePage(),
+              "signIn": (context) => const SignIn(),
             },
           );
         },
@@ -48,6 +52,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
