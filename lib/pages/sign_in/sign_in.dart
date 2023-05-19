@@ -16,7 +16,34 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: buildAppBar()
+        appBar: buildAppBar(),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildThirdPartyLogin(),
+              Center(
+                child: reusableText(
+                  "Or use your email account to login",
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 66.h),
+                padding: EdgeInsets.only(
+                  left: 25.w,
+                  right: 25.w,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    reusableText("Email"),
+                    buildTextField("fsdf","jklsdfjsd"),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
