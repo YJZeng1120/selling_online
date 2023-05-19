@@ -28,6 +28,10 @@ Widget buildThirdPartyLogin() {
       top: 40,
       bottom: 20,
     ),
+    padding: EdgeInsets.only(
+      left: 36.w,
+      right: 36.w,
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -79,7 +83,7 @@ Widget buildTextField(
         15.h,
       ),
       border: Border.all(
-        color: AppColors.primaryFourElementText,
+        color: AppColors.primaryFourthElementText,
         width: 1,
       ),
     ),
@@ -174,7 +178,7 @@ Widget buildLogInAndRegButton(
             width: 1,
             color: buttonType == "login"
                 ? Colors.transparent
-                : AppColors.primaryFourElementText,
+                : AppColors.primaryFourthElementText,
           ),
           boxShadow: [
             BoxShadow(
