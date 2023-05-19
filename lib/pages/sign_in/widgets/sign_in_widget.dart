@@ -64,10 +64,12 @@ Widget reusableText(String text) {
 }
 
 Widget buildTextField(
-  String text,
+  String hintText,
   String textType,
+  String iconName,
 ) {
   return Container(
+    margin: EdgeInsets.only(bottom: 20.h),
     width: 325.w,
     height: 50.h,
     decoration: BoxDecoration(
@@ -86,15 +88,15 @@ Widget buildTextField(
           margin: EdgeInsets.only(left: 17.w),
           width: 16.w,
           height: 16.h,
-          child: Image.asset("assets/icons/user.png"),
+          child: Image.asset("assets/icons/$iconName.png"),
         ),
-        Container(
+        SizedBox(
           width: 270.w,
           height: 50.h,
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              hintText: "Enter your email address",
+              hintText: hintText,
               hintStyle: TextStyle(
                 color: Colors.grey.withOpacity(0.6),
                 fontWeight: FontWeight.normal,
@@ -126,9 +128,61 @@ Widget buildTextField(
               fontWeight: FontWeight.normal,
               fontSize: 14.sp,
             ),
+            autocorrect: false,
+            obscureText: textType == "password" ? true : false,
           ),
         )
       ],
+    ),
+  );
+}
+
+Widget forgotPassword() {
+  return Container(
+    child: GestureDetector(
+      onTap: () {},
+      child: Text(
+        "Forget password?",
+        style: TextStyle(
+          color: Colors.black,
+          decoration: TextDecoration.underline,
+          fontSize: 12.sp,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget buildLogInAndRegButton(
+  String buttonName,
+  String buttonType,
+) {
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      margin: EdgeInsets.only(top: buttonType == "login" ? 40.h : 20.h),
+      width: 325.w,
+      height: 50.h,
+      decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(15.h),
+          boxShadow: [
+            BoxShadow(
+                spreadRadius: 1,
+                blurRadius: 2,
+                color: Colors.grey.withOpacity(0.5),
+                offset: const Offset(0, 1)),
+          ]),
+      child: Center(
+        child: Text(
+          buttonName,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      ),
     ),
   );
 }
