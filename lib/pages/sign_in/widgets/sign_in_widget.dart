@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:selling_online/common/values/colors.dart';
 
 AppBar buildAppBar() {
   return AppBar(
@@ -7,14 +8,14 @@ AppBar buildAppBar() {
       "Sign In",
       style: TextStyle(
         fontSize: 16.sp,
-        color: Colors.black,
+        color: AppColors.primaryText,
         fontWeight: FontWeight.normal,
       ),
     ),
     bottom: PreferredSize(
       preferredSize: const Size.fromHeight(1),
       child: Container(
-        color: Colors.grey.withOpacity(0.5),
+        color: AppColors.primarySecondaryBackground,
         height: 1,
       ),
     ),
@@ -78,7 +79,7 @@ Widget buildTextField(
         15.h,
       ),
       border: Border.all(
-        color: Colors.black,
+        color: AppColors.primaryFourElementText,
         width: 1,
       ),
     ),
@@ -97,8 +98,8 @@ Widget buildTextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               hintText: hintText,
-              hintStyle: TextStyle(
-                color: Colors.grey.withOpacity(0.6),
+              hintStyle: const TextStyle(
+                color: AppColors.primarySecondaryElementText,
                 fontWeight: FontWeight.normal,
               ),
               border: const OutlineInputBorder(
@@ -123,7 +124,7 @@ Widget buildTextField(
               ),
             ),
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontFamily: "Avenir",
               fontWeight: FontWeight.normal,
               fontSize: 14.sp,
@@ -144,8 +145,9 @@ Widget forgotPassword() {
       child: Text(
         "Forget password?",
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           decoration: TextDecoration.underline,
+          decorationColor: AppColors.primaryText,
           fontSize: 12.sp,
         ),
       ),
@@ -164,8 +166,16 @@ Widget buildLogInAndRegButton(
       width: 325.w,
       height: 50.h,
       decoration: BoxDecoration(
-          color: Colors.blue,
+          color: buttonType == "login"
+              ? AppColors.primaryElement
+              : AppColors.primaryBackground,
           borderRadius: BorderRadius.circular(15.h),
+          border: Border.all(
+            width: 1,
+            color: buttonType == "login"
+                ? Colors.transparent
+                : AppColors.primaryFourElementText,
+          ),
           boxShadow: [
             BoxShadow(
                 spreadRadius: 1,
@@ -177,7 +187,9 @@ Widget buildLogInAndRegButton(
         child: Text(
           buttonName,
           style: TextStyle(
-            color: Colors.white,
+            color: buttonType == "login"
+                ? AppColors.primaryBackground
+                : AppColors.primaryText,
             fontSize: 16.sp,
             fontWeight: FontWeight.normal,
           ),
