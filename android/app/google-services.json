@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "613638804329",
+    "project_id": "selling-online-9f678",
+    "storage_bucket": "selling-online-9f678.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613638804329:android:0fa7fed72a0e6df60de3f8",
+        "android_client_info": {
+          "package_name": "com.example.selling_online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613638804329-3u9oou8b9b7ihdo8tb7qrfbsdm9tnanr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhFqJQJbixVuxEsFwaTZxi_mOa_p5H4UQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613638804329-3u9oou8b9b7ihdo8tb7qrfbsdm9tnanr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
